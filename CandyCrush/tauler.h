@@ -10,8 +10,7 @@ public:
 	void setCandy(const Candy& candy, const int i, const int j);
 	Candy getCandy(const int i, const int j) const { return m_tauler[i][j]; };
 	void actualitza();
-	bool junts(const Posicio& p1, const Posicio& p2);
-	void intercanvia(Candy& c1, Candy& c2);
+	bool intercanviar(Candy& c1,Candy& c2);
 private:
 	Candy m_tauler[MAX_FILES][MAX_COLUMNES];
 };
