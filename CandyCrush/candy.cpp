@@ -130,4 +130,4 @@ ofstream& operator<<(ofstream& input, Candy& c)
 {
 	input << c.CandyToString();
 	return input;
-}
+} 
