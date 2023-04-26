@@ -23,6 +23,7 @@ private:
 };
 
 ifstream& operator>>(ifstream& input, Candy& c);
+ofstream& operator<<(ofstream& input, Candy& c);
   
 #endif
 
