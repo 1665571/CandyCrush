@@ -11,6 +11,8 @@ class Candy
 {
 public:
 	void setColor(const ColorCandy& color);
+	void setPosicio(const int i, const int j);
+	Posicio getPosicio() const { return posicioCandy; };
 	void setTipus(const TipusCandy& tipo);
 	ColorCandy getColor() const { return m_color; };
 	TipusCandy getTipus() const { return m_tipus; };

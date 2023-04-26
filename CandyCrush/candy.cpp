@@ -4,6 +4,10 @@ void Candy::setColor(const ColorCandy& color)
 {
 	m_color = color;
 }
+void Candy::setPosicio(const int i, const int j)
+{
+	posicioCandy.set(i, j);
+}
 void Candy::setTipus(const TipusCandy& tipo)
 {
 	m_tipus = tipo;
