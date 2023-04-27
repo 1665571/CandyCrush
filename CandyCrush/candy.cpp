@@ -14,37 +14,26 @@ void Candy::setTipus(const TipusCandy& tipo)
 }
 void Candy::StringToCandy(const string& codi)
 {
-	
+
 	//Codificacio Tipus: NORMAL (N) RATLLAT-HORITZONTAL (RH) RATLLAT-VERTICAL (RV) NO_TIPUS (X)
 	//Codificacio Color: VERMELL (R) TARONJA (O) GROC (Y) BLAU (B) VERD (G) LILA (P) NO_COLOR (-)
 	//Ordre codificacio: Color Tipus --- per exemple RN (Vermell normal)
-	
+
 	//Color
-	if (codi[0] == 'R')
+	if (codi == "R")
 		m_color = VERMELL;
-	if (codi[0] == 'O')
+	if (codi == "O")
 		m_color = TARONJA;
-	if (codi[0] == 'Y')
+	if (codi == "Y")
 		m_color = GROC;
-	if (codi[0] == 'B')
+	if (codi == "B")
 		m_color = BLAU;
-	if (codi[0] == 'G')
+	if (codi == "G")
 		m_color = VERD;
-	if (codi[0] == 'P')
+	if (codi == "P")
 		m_color = LILA;
-	if (codi[0] == '-')
+	if (codi == "-")
 		m_color = NO_COLOR;
-
-	//Tipus
-	if (codi[1] == 'N')
-		m_tipus = NORMAL;
-	if (codi[1] == 'R' && codi[2] == 'H')
-		m_tipus = RATLLAT_HORIZONTAL;
-	if (codi[1] == 'R' && codi[2] == 'V')
-		m_tipus = RATLLAT_VERTICAL;
-	if (codi[1] == 'X')
-		m_tipus = NO_TIPUS;
-
 
 }
 string Candy::CandyToString()
@@ -53,7 +42,7 @@ string Candy::CandyToString()
 
 	//Color
 	if (m_color == VERMELL)
-		if(m_tipus==RATLLAT_HORIZONTAL || m_tipus == RATLLAT_VERTICAL)
+		if (m_tipus == RATLLAT_HORIZONTAL || m_tipus == RATLLAT_VERTICAL)
 			codi = 'r';
 		else
 			codi = 'R';
@@ -106,20 +95,20 @@ string Candy::CandyToString()
 
 ifstream& operator>>(ifstream& input, Candy& c)
 {
-	char color;
+	string color;
 	input >> color;
 
-	if (color == 'R')
+	if (color == "R")
 		c.setColor(VERMELL);
-	if (color == 'O')
+	if (color == "O")
 		c.setColor(TARONJA);
-	if (color == 'Y')
+	if (color == "Y")
 		c.setColor(GROC);
-	if (color == 'B')
+	if (color == "B")
 		c.setColor(BLAU);
-	if (color == 'G')
+	if (color == "G")
 		c.setColor(VERD);
-	if (color == 'P')
+	if (color == "P")
 		c.setColor(LILA);
 
 	return input;
@@ -130,4 +119,4 @@ ofstream& operator<<(ofstream& input, Candy& c)
 {
 	input << c.CandyToString();
 	return input;
-} 
+}
