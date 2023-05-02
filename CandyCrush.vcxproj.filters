@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de origen">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CandyCrush.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="partida.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="posicio.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="candy.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="tauler.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="partida.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="posicio.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="candy.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="tauler.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="definicions.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data\partida_doble_matching.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\partida_matching_cascada.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\partida_matching_doble_cascada.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\partida_matching_horizontal.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\partida_matching_vertical.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\partida_matching_vertical_horizontal.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\partida_no_matching.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\partida_ratllat_horizontal.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\partida_ratllat_horizontal_cascada.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\partida_ratllat_vertical.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_doble_matching.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_doble_matching_esperat.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_matching_cascada.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_matching_cascada_esperat.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_matching_doble_cascada.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_matching_doble_cascada_esperat.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_matching_horizontal.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_matching_horizontal_esperat.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_matching_vertical.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_matching_vertical_esperat.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_matching_vertical_horizontal.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_matching_vertical_horizontal_esperat.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_no_matching.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_no_matching_esperat.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_ratllat_horizontal.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_ratllat_horizontal_cascada.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_ratllat_horizontal_cascada_esperat.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_ratllat_horizontal_esperat.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_ratllat_vertical.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Data\resultat_ratllat_vertical_esperat.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="Tests.txt" />
+  </ItemGroup>
+</Project>

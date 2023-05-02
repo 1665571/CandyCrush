@@ -8,10 +8,10 @@ class Tauler
 {
 public:
 	void setCandy(const Candy& candy, const int i, const int j);
-	Candy getCandy(const int i, const int j) const { return m_tauler[i][j]; };
+	Candy getCandy(const Posicio& pos) const { return m_tauler[pos.getFila()][pos.getColumna()]; };
 	bool junts(const Posicio& p1, const Posicio& p2);
 	void intercanvia(const Posicio& p1, const Posicio& p2);
-	void afegirCaramels();
+	void afegeixCaramels(int& count);
 	void desplacament();
 	bool elimina(const Posicio& posicio1, const Posicio& posicio2);
 private:

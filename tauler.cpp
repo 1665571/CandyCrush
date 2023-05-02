@@ -3,8 +3,11 @@
 
 void Tauler::setCandy(const Candy& candy, const int i, const int j)
 {
-	m_tauler[i][j] = candy;
-	m_tauler[i][j].setPosicio(i, j);
+	Posicio pos;
+	m_tauler[i][j].setColor(candy.getColor());
+	m_tauler[i][j].setTipus(candy.getTipus());
+	pos.set(i, j);
+	m_tauler[i][j].setPosicio(pos);
 }
 
 void Tauler::intercanvia(const Posicio& p1, const Posicio& p2)
@@ -39,11 +42,13 @@ ifstream& operator>>(ifstream& input, Tauler& t)
 ofstream& operator<<(ofstream& output, const Tauler& t)
 {
 	Candy c;
+	Posicio pos;
 	for (int i = 0; i < MAX_FILES; i++)
 	{
 		for (int j = 0; j < MAX_COLUMNES; j++)
 		{
-			c = t.getCandy(i, j);
+			pos.set(i, j);
+			c = t.getCandy(pos);
 			output << c << " ";
 		}
 		output << endl;
@@ -59,11 +64,26 @@ bool Tauler::elimina(const Posicio& posicio1, const Posicio& posicio2)
 	candyRatllatH.setTipus(RATLLAT_HORIZONTAL);
 	candyRatllatV.setTipus(RATLLAT_VERTICAL);
 
+
+	//Moviment Horitzontal=1 
+	//Moviment Vertical=0
+	int tipusMov;
+	if (posicio1.getFila() == posicio2.getFila())
+		tipusMov = 1;
+	else
+		tipusMov = 0;
+
+	Posicio pos;
+
 	int contador = 0;
 	bool movValid = false;
 
-	//Recorremos por columnas
+	bool generadorTrobat = false;
+
+	//Recorremos las filas
 	for (int f = 0; f < MAX_FILES; f++)
+	{
+		contador = 0;
 		for (int c = 0; c < MAX_COLUMNES; c++)
 		{
 			if (m_tauler[f][c].getColor() == m_tauler[f][c + 1].getColor())
@@ -72,30 +92,53 @@ bool Tauler::elimina(const Posicio& posicio1, const Posicio& posicio2)
 			}
 			else
 			{
+
 				//Si se pude hacer el movimiento eliminamos los candys
-				if (contador >= 2)
+				if (contador > 2)
 				{
-					if (contador == 2)
+					for (int i = 0; i <= contador; i++)
 					{
-						for (int i = 0; i < contador; i++)
+						if (((f == posicio1.getFila() && c - i == posicio1.getColumna()) || (f == posicio2.getFila() && c - i == posicio2.getColumna())) && (tipusMov == 1) )
+						{
+							candyRatllatH.setColor(m_tauler[f][c - i].getColor());
+							setCandy(candyRatllatH, f, c - i);
+							generadorTrobat = true;
+						}
+						else if (((f == posicio1.getFila() && c - i == posicio1.getColumna()) || (f == posicio2.getFila() && c - i == posicio2.getColumna())) && (tipusMov == 0))
+						{
+							candyRatllatV.setColor(m_tauler[f][c - i].getColor());
+							setCandy(candyRatllatV, f, c - i);
+							generadorTrobat = true;
+						}
+						else
 						{
 							setCandy(candyEliminat, f, c - i);
 						}
 					}
-					else
+					movValid = true;
+				}
+				if (contador == 2)
+				{
+					for (int i = 0; i <= contador; i++)
 					{
-						for (int i = 0; i < contador; i++)
+						pos.set(f, c - i);
+						if (getCandy(pos).getTipus() == RATLLAT_HORIZONTAL)
 						{
-							if (f == posicio1.getFila() && c - i == posicio1.getColumna())
+							for (int y = 0; y < MAX_COLUMNES; y++)
 							{
-								candyRatllatH.setColor(m_tauler[f][c - i].getColor());
-								setCandy(candyRatllatH, f, c - i);
+								setCandy(candyEliminat, f, y);
 							}
-							if (f == posicio2.getFila() && c - i == posicio2.getColumna())
+						}
+						else if (getCandy(pos).getTipus() == RATLLAT_VERTICAL)
+						{
+							for (int x = 0; x < MAX_FILES; x++)
 							{
-								candyRatllatH.setColor(m_tauler[f][c - i].getColor());
-								setCandy(candyRatllatH, f, c - i);
+								setCandy(candyEliminat, x, c - i);
 							}
+						}
+						else
+						{
+							setCandy(candyEliminat, f, c - i);
 						}
 					}
 					movValid = true;
@@ -103,9 +146,13 @@ bool Tauler::elimina(const Posicio& posicio1, const Posicio& posicio2)
 				contador = 0;
 			}
 		}
+	}
 
-	//Recorremos pot filas
+	contador = 0;
+	//Recorremos las columnas
 	for (int c = 0; c < MAX_COLUMNES; c++)
+	{
+		contador = 0;
 		for (int f = 0; f < MAX_FILES; f++)
 		{
 			if (m_tauler[f][c].getColor() == m_tauler[f + 1][c].getColor())
@@ -115,29 +162,49 @@ bool Tauler::elimina(const Posicio& posicio1, const Posicio& posicio2)
 			else
 			{
 				//Si se pude hacer el movimiento eliminamos los candys
-				if (contador >= 3)
+				if (contador > 2)
 				{
-					if (contador == 3)
+					for (int i = 0; i <= contador; i++)
 					{
-						for (int i = 0; i < contador; i++)
+						if (((f - i == posicio1.getFila() && c == posicio1.getColumna()) || (f - i == posicio2.getFila() && c == posicio2.getColumna())) && (tipusMov == 1) )
+						{
+							candyRatllatH.setColor(m_tauler[f - i][c].getColor());
+							setCandy(candyRatllatH, f - i, c);
+						}
+						else if (((f - i == posicio1.getFila() && c == posicio1.getColumna()) || (f - i == posicio2.getFila() && c == posicio2.getColumna())) && (tipusMov == 0))
+						{
+							candyRatllatV.setColor(m_tauler[f - i][c].getColor());
+							setCandy(candyRatllatV, f - i, c);
+						}
+						else
 						{
 							setCandy(candyEliminat, f - i, c);
 						}
 					}
-					else
+					movValid = true;
+				}
+				if (contador == 2)
+				{
+					for (int i = 0; i <= contador; i++)
 					{
-						for (int i = 0; i < contador; i++)
+						pos.set(f - i, c);
+						if (getCandy(pos).getTipus() == RATLLAT_HORIZONTAL)
 						{
-							if (f - i == posicio1.getFila() && c == posicio1.getColumna())
+							for (int y = 0; y < MAX_COLUMNES; y++)
 							{
-								candyRatllatV.setColor(m_tauler[f - i][c].getColor());
-								setCandy(candyRatllatV, f - i, c);
+								setCandy(candyEliminat, f - i, y);
 							}
-							if (f - i == posicio2.getFila() && c == posicio2.getColumna())
+						}
+						else if (getCandy(pos).getTipus() == RATLLAT_VERTICAL)
+						{
+							for (int x = 0; x < MAX_FILES; x++)
 							{
-								candyRatllatV.setColor(m_tauler[f - i][c].getColor());
-								setCandy(candyRatllatV, f - i, c);
+								setCandy(candyEliminat, x, c);
 							}
+						}
+						else
+						{
+							setCandy(candyEliminat, f - i, c);
 						}
 					}
 					movValid = true;
@@ -145,6 +212,7 @@ bool Tauler::elimina(const Posicio& posicio1, const Posicio& posicio2)
 				contador = 0;
 			}
 		}
+	}
 
 	return movValid;
 
@@ -183,13 +251,12 @@ void Tauler::desplacament()
 	}
 }
 
-void Tauler::afegirCaramels()
+void Tauler::afegeixCaramels(int& count)
 {
-	//Añadimos caramelos en el orden R O Y B G P 
-	//Con prioridad de abajo a arriba y de izquierda a derecha
-	int count = 0;
+	//Ordre per afegir els caramels: R O Y B G P 
+	//Ordre -> de baix a dalt i esquerra a dreta
 
-	for (int f = MAX_FILES; f < 0; f--)
+	for (int f = MAX_FILES; f >= 0; f--)
 	{
 		for (int c = 0; c < MAX_COLUMNES; c++)
 		{

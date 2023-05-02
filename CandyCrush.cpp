@@ -107,9 +107,11 @@ bool comparaResultatPartida(const string& nomFitxerResultat, const string& nomFi
 
 }
 
+Partida partida;
+
 int main()
 {
-	Partida partida;
+	
 
 	float grade = 0.0;
 	bool correcte = true;

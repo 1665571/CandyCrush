@@ -19,23 +19,28 @@ void Partida::inicialitza(const string& nomFitxer)
 	c.setTipus(NORMAL);
 	c.StringToCandy(colorCandy);
 	m_candyObjectiu = c.getColor();
+	secuenciaCaramels = 0;
 }
 
 void Partida::fesMoviment(const Posicio& pos1, const Posicio& pos2)
 {
-
 	if (m_tauler.junts(pos1, pos2))
 	{
 		m_tauler.intercanvia(pos1, pos2);
-
-		if (!m_tauler.elimina(pos1,pos2))
+		bool eliminat = m_tauler.elimina(pos1, pos2);
+		if (!eliminat)
 		{
 			m_tauler.intercanvia(pos1, pos2);
 		}
 		else
 		{
-			m_tauler.desplacament();
-			m_tauler.afegirCaramels();
+			while (eliminat)
+			{
+				m_tauler.desplacament();
+				m_tauler.afegeixCaramels(secuenciaCaramels);
+				eliminat = m_tauler.elimina(pos1, pos2);
+			}
+			
 		}
 	}
 }

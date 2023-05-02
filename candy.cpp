@@ -4,9 +4,9 @@ void Candy::setColor(const ColorCandy& color)
 {
 	m_color = color;
 }
-void Candy::setPosicio(const int i, const int j)
+void Candy::setPosicio(const Posicio& pos)
 {
-	posicioCandy.set(i, j);
+	posicioCandy.set(pos.getFila(), pos.getColumna());
 }
 void Candy::setTipus(const TipusCandy& tipo)
 {
@@ -32,7 +32,7 @@ void Candy::StringToCandy(const string& codi)
 		m_color = VERD;
 	if (codi == "P")
 		m_color = LILA;
-	if (codi == "-")
+	if (codi == " ")
 		m_color = NO_COLOR;
 
 }
@@ -72,24 +72,8 @@ string Candy::CandyToString()
 		else
 			codi = 'P';
 	if (m_color == NO_COLOR)
-		codi = '-';
+		codi = ' ';
 
-	/*
-	if (m_tipus == NORMAL)
-		codi[1] = 'N';
-	if (m_tipus == RATLLAT_HORIZONTAL)
-	{
-		codi[1] = 'R';
-		codi[2] = 'H';
-	}
-	if (m_tipus == RATLLAT_VERTICAL)
-	{
-		codi[1] = 'R';
-		codi[2] = 'V';
-	}
-	if (m_tipus == NO_TIPUS)
-		codi[1] = 'X';
-		*/
 	return codi;
 }
 
